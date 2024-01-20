@@ -25,9 +25,8 @@ Running the Project
 1.  Ensure that you have Java and Maven installed.
 2.  Import the project into your development environment (e.g., IntelliJ IDEA, Eclipse).
 3.  Install Apache Tomcat to run the application as a servlet. ([Download Apache Tomcat](http://tomcat.apache.org/))
-4.  Configure the application to use Tomcat by adding the `spring-boot-starter-tomcat` dependency in the `pom.xml` file.
-5.  Run the application, specifying the database configurations in the `application.properties` file.
-6.  Access the Library Manager web interface at [http://localhost:8080](http://localhost:8080).
+4.  Run the application, specifying the database configurations in the `application.properties` file.
+5.  Access the Library Manager web interface at [http://localhost:8080](http://localhost:8080).
 
 Additional settings, such as database configuration and port, can be adjusted in the `application.properties` file.
 
