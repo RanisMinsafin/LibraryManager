@@ -32,8 +32,6 @@ Note:
 Before running the application, ensure that the database schema is created. 
 You can execute the SQL script in schema.sql to set up the required tables and schema.
 
-Additional settings, such as database configuration and port, can be adjusted in the `application.properties` file.
-
 Library Manager process in action
 -------------------
    ![Gif](library.gif)
