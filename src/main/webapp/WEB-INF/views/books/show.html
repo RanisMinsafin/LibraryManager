@@ -129,12 +129,13 @@
     <div class="form-container" th:if="${people}">
         <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.getId()})}">
             <label for="person">Choose person:</label>
-            <select th:name="id" id="person">
-                <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getName()}"></option>
+            <select th:name="ownerId" id="person">
+                <option th:each="person : ${people}" th:value="${person.id}" th:text="${person.name}"></option>
             </select>
             <input type="submit" value="Assign!" class="button"/>
         </form>
     </div>
+
 
     <div class="action-buttons">
         <form th:method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">

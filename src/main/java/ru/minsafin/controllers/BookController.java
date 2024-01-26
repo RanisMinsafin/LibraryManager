@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.minsafin.dao.BookDao;
+import ru.minsafin.dao.interfaces.BookDao;
 import ru.minsafin.models.Book;
 import ru.minsafin.models.Person;
 import ru.minsafin.util.BookValidator;
@@ -86,13 +86,13 @@ public class BookController {
     }
 
     @PatchMapping("/{id}/assign")
-    public String assign(@PathVariable("id") int id, @ModelAttribute("person") Person selectedPerson){
-        bookDao.assignPerson(id, selectedPerson);
+    public String assign(@PathVariable("id") int id, @ModelAttribute("ownerId") int ownerId) {
+        bookDao.assignPerson(id, ownerId);
         return "redirect:/books";
     }
 
     @PatchMapping("/{id}/release")
-    public String release(@PathVariable("id") int id){
+    public String release(@PathVariable("id") int id) {
         bookDao.release(id);
         return "redirect:/books";
     }

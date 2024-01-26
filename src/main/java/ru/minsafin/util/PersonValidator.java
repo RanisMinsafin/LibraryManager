@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import ru.minsafin.dao.PersonDao;
+import ru.minsafin.dao.interfaces.PersonDao;
 import ru.minsafin.models.Person;
 
 @Component

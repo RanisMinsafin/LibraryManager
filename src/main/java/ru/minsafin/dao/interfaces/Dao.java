@@ -1,6 +1,4 @@
-package ru.minsafin.dao;
-
-import ru.minsafin.models.Person;
+package ru.minsafin.dao.interfaces;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +13,4 @@ public interface Dao<T> {
     Optional<T> getById(int id);
 
     List<T> getAll();
-
-    Optional<T> getByName(String name);
-
 }

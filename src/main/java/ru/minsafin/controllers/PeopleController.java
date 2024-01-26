@@ -5,13 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.minsafin.dao.PersonDao;
-import ru.minsafin.models.Book;
+import ru.minsafin.dao.interfaces.PersonDao;
 import ru.minsafin.models.Person;
 import ru.minsafin.util.PersonValidator;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/people")
@@ -20,7 +18,7 @@ public class PeopleController {
     private final PersonValidator personValidator;
 
     @Autowired
-    public PeopleController(PersonDao personDao, PersonValidator personValidator) {
+    public PeopleController( PersonDao personDao, PersonValidator personValidator) {
         this.personDao = personDao;
         this.personValidator = personValidator;
     }
