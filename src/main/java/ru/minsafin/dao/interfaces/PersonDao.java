@@ -8,6 +8,4 @@ import java.util.Optional;
 
 public interface PersonDao extends Dao<Person> {
     Optional<Person> getByName(String name);
-
-    List<Book> getBooksByPerson(int id);
 }

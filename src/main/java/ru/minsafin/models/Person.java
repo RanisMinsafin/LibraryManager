@@ -37,7 +37,7 @@ public class Person {
     @Max(value = 2024, message = "Birth year should be equal or less than 2024")
     private int birthYear;
 
-    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "reader", fetch = FetchType.EAGER)
     @Cascade(SAVE_UPDATE)
     private List<Book> books;
 
@@ -50,6 +50,6 @@ public class Person {
         } else {
             books.add(book);
         }
-        book.setOwner(this);
+        book.setReader(this);
     }
 }

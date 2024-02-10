@@ -23,16 +23,16 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     @Transactional
-    public void create(Person person) {
+    public void save(Person person) {
         Session session = sessionFactory.getCurrentSession();
         session.save(person);
     }
 
     @Override
     @Transactional
-    public void update(Person updatedPerson) {
+    public void update(int id, Person updatedPerson) {
         Session session = sessionFactory.getCurrentSession();
-        Person personToBeUpdated = session.get(Person.class, updatedPerson.getId());
+        Person personToBeUpdated = session.get(Person.class, id);
         personToBeUpdated.setName(updatedPerson.getName());
         personToBeUpdated.setBirthYear(updatedPerson.getBirthYear());
     }
@@ -45,14 +45,14 @@ public class PersonDaoImpl implements PersonDao {
 
         List<Book> books = personToBeDeleted.getBooks();
         for(Book book : books){
-            book.setOwner(null);
+            book.setReader(null);
         }
         session.delete(personToBeDeleted);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Person> getById(int id) {
+    public Optional<Person> findById(int id) {
         Session session = sessionFactory.getCurrentSession();
         Person person = session.get(Person.class, id);
         return Optional.ofNullable(person);
@@ -72,18 +72,9 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Person> getAll() {
+        public List<Person> findAll() {
         Session session = sessionFactory.getCurrentSession();
-
         return session.createQuery("select p from Person p", Person.class)
                 .getResultList();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Book> getBooksByPerson(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        Person person = session.get(Person.class, id);
-        return person.getBooks();
     }
 }

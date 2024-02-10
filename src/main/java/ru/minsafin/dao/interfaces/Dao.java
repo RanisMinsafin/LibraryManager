@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface Dao<T> {
-    void create(T entity);
+    void save(T entity);
 
-    void update(T entity);
+    void update(int id, T entity);
 
     void delete(int id);
 
-    Optional<T> getById(int id);
+    Optional<T> findById(int id);
 
-    List<T> getAll();
+    List<T> findAll();
 }

@@ -1,3 +1,4 @@
+drop schema if exists library cascade;
 create schema if not exists library;
 
 create table if not exists library.person
@@ -13,7 +14,16 @@ create table if not exists library.book
     title            varchar(50) not null unique,
     author           varchar(30) not null,
     publication_year int,
-    owner_id         int         null references library.person (id) on delete set null
+    reader_id        int         null references library.person (id) on delete set null
 );
 
+INSERT INTO library.person (name, birth_year)
+VALUES ('John Doe', 1985),
+       ('Alice Smith', 1990),
+       ('Bob Johnson', 1978);
 
+INSERT INTO library.book (title, author, publication_year, reader_id)
+VALUES ('The Catcher in the Rye', 'J.D. Salinger', 1951, 1),
+       ('To Kill a Mockingbird', 'Harper Lee', 1960, 2),
+       ('1984', 'George Orwell', 1949, 3),
+       ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 1);

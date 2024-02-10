@@ -24,16 +24,16 @@
             color: #333;
         }
 
-        .owner-info {
+        .reader-info {
             margin-top: 20px;
         }
 
-        .owner-info a {
+        .reader-info a {
             color: #007bff;
             text-decoration: none;
         }
 
-        .owner-info a:hover {
+        .reader-info a:hover {
             text-decoration: underline;
         }
 
@@ -115,21 +115,21 @@
 <div class="container">
     <h1 th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getPublicationYear()}">Book Details</h1>
 
-    <div th:if="${owner}" class="owner-info">
-        <p th:text="${owner.getName()} + ' has the book now'"></p>
+    <div th:if="${reader}" class="reader-info">
+        <p th:text="${reader.getName()} + ' has the book now'"></p>
     </div>
 
 
-    <div class="form-container" th:if="${owner}">
-        <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}">
-            <button type="submit" class="button">Release</button>
+    <div class="form-container" th:if="${reader}">
+        <form th:method="PATCH" th:action="@{/books/{id}/free(id=${book.getId()})}">
+            <button type="submit" class="button">Free</button>
         </form>
     </div>
 
     <div class="form-container" th:if="${people}">
         <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.getId()})}">
             <label for="person">Choose person:</label>
-            <select th:name="ownerId" id="person">
+            <select th:name="readerId" id="person">
                 <option th:each="person : ${people}" th:value="${person.id}" th:text="${person.name}"></option>
             </select>
             <input type="submit" value="Assign!" class="button"/>

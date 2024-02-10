@@ -38,9 +38,9 @@ public class Book {
     private int publicationYear;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    @JoinColumn(name = "reader_id", referencedColumnName = "id")
     @Cascade(SAVE_UPDATE)
-    private Person owner;
+    private Person reader;
 
     public Book() {
     }

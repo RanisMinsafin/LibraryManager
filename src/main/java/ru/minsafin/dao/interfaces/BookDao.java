@@ -7,13 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookDao extends Dao<Book> {
-    Optional<Book> getByTitle(String title);
+    Optional<Book> findByTitle(String title);
 
-    void assignPerson(int id, int ownerId);
+    void assignReader(int id, int readerId);
 
-    void release(int id);
+    void free(int id);
 
-    Optional<Person> getBookOwner(int id);
-
-    List<Person> getAllPersons();
+    List<Person> findAllReaders();
 }
